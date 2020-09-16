@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingSport.API", "BettingSport.API\BettingSport.API.csproj", "{F5DD26E6-35D0-4A99-B423-3472B2838527}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BettingSport.API", "BettingSport.API\BettingSport.API.csproj", "{F5DD26E6-35D0-4A99-B423-3472B2838527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingSport.Core", "BettingSport.Core\BettingSport.Core.csproj", "{CE2DBADB-1FBC-4087-AFFF-1EF19C2E9CCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingSport.EfInfrastructure", "BettingSport.EfInfrastructure\BettingSport.EfInfrastructure.csproj", "{CEABBE79-9685-46EF-A9E5-363B7A19325C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{F5DD26E6-35D0-4A99-B423-3472B2838527}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5DD26E6-35D0-4A99-B423-3472B2838527}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5DD26E6-35D0-4A99-B423-3472B2838527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE2DBADB-1FBC-4087-AFFF-1EF19C2E9CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2DBADB-1FBC-4087-AFFF-1EF19C2E9CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2DBADB-1FBC-4087-AFFF-1EF19C2E9CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2DBADB-1FBC-4087-AFFF-1EF19C2E9CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEABBE79-9685-46EF-A9E5-363B7A19325C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEABBE79-9685-46EF-A9E5-363B7A19325C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEABBE79-9685-46EF-A9E5-363B7A19325C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEABBE79-9685-46EF-A9E5-363B7A19325C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
