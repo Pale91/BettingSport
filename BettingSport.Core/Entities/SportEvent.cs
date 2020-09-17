@@ -4,10 +4,8 @@ using System.Text;
 
 namespace BettingSport.Core.Entities
 {
-    public class SportEvent
+    public class SportEvent : BaseEntity
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public double? OddsForFirstTeam { get; set; }

@@ -1,4 +1,5 @@
-﻿using BettingSport.Core.Interfaces;
+﻿using BettingSport.Core.Entities;
+using BettingSport.Core.Interfaces;
 using BettingSport.EfInfrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BettingSport.EfInfrastructure.AccessData
 {
-    public class EfRepository<TEntity, TKey> : IRepository<TEntity, TKey>, IAsyncRepository<TEntity, TKey> where TEntity: class
+    public class EfRepository<TEntity> : IRepository<TEntity>, IAsyncRepository<TEntity> where TEntity: BaseEntity
     {
         BettingSportContext context;
         DbSet<TEntity> dbSet;
@@ -29,7 +30,7 @@ namespace BettingSport.EfInfrastructure.AccessData
             throw new NotImplementedException();
         }
 
-        public void Delete(TKey key)
+        public void Delete(int key)
         {
             throw new NotImplementedException();
         }
@@ -39,7 +40,7 @@ namespace BettingSport.EfInfrastructure.AccessData
             throw new NotImplementedException();
         }
 
-        public Task DeleteAsync(TKey key)
+        public Task DeleteAsync(int key)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +50,7 @@ namespace BettingSport.EfInfrastructure.AccessData
             throw new NotImplementedException();
         }
 
-        public TEntity Get(TKey key)
+        public TEntity Get(int key)
         {
             return dbSet.Find(key);
         }
@@ -64,7 +65,7 @@ namespace BettingSport.EfInfrastructure.AccessData
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetAsync(TKey key)
+        public Task<TEntity> GetAsync(int key)
         {
             throw new NotImplementedException();
         }

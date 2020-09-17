@@ -18,7 +18,7 @@ namespace BettingSport.EfInfrastructure.Extensions
             services.AddDbContext<BettingSportContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("BettingSportContext")));
 
-            services.AddScoped(typeof(IRepository<,>), typeof(EfRepository<,>));
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
         }
     }
 }

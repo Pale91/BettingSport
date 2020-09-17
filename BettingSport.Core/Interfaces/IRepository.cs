@@ -1,16 +1,21 @@
-﻿using System;
+﻿using BettingSport.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BettingSport.Core.Interfaces
 {
-    public interface IRepository<TEntity, TKey> : IReadonlyRepository<TEntity, TKey> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : BaseEntity
     {
+        TEntity Get(int key);
+
+        IEnumerable<TEntity> GetAll();
+
         TEntity Add(TEntity entity);
         
         TEntity Update(TEntity entity);
 
-        void Delete(TKey key);
+        void Delete(int key);
 
         void Delete(TEntity entity);
     }
