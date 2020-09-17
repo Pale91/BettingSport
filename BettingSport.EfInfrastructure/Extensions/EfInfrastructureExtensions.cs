@@ -19,6 +19,10 @@ namespace BettingSport.EfInfrastructure.Extensions
                 options.UseSqlServer(configuration.GetConnectionString("BettingSportContext")));
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddScoped(typeof(IReadonlyRepository<>), typeof(EfRepository<>));
+            services.AddScoped(typeof(IAsyncReadonlyRepository<>), typeof(EfRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAsyncUnitOfWork, UnitOfWork>();
         }
     }
 }
