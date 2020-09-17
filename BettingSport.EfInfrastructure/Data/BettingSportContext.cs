@@ -15,5 +15,12 @@ namespace BettingSport.EfInfrastructure.Data
         }
         public DbSet<SportEvent> SportEvents { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfigurationsFromAssembly(typeof(BettingSportContext).Assembly);
+        }
+
     }
 }
