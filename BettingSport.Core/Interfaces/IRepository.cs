@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BettingSport.Core
+namespace BettingSport.Core.Interfaces
 {
-    interface IRepository
+    public interface IRepository<TEntity, TKey> where TEntity : class
     {
+        TEntity Get(TKey key);
+
+        IEnumerable<TEntity> GetAll();
     }
 }

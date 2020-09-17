@@ -1,4 +1,6 @@
-﻿using BettingSport.EfInfrastructure.Data;
+﻿using BettingSport.Core.Interfaces;
+using BettingSport.EfInfrastructure.AccessData;
+using BettingSport.EfInfrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,8 @@ namespace BettingSport.EfInfrastructure.Extensions
         {
             services.AddDbContext<BettingSportContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("BettingSportContext")));
+
+            services.AddScoped(typeof(IRepository<,>), typeof(EfRepository<,>));
         }
     }
 }
