@@ -1,0 +1,13 @@
+<p>sport-event-list works!</p>
+<table *ngIf="events" style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>oddsForFirstTeam</th>
+        <th>oddsForDraw</th>
+        <th>oddsForSecondTeam</th>
+        <th>startDate</th>
+    </tr>
+    <tr *ngFor="let e of events">
+        <app-sport-event [_event]="e"></app-sport-event>
+    </tr>
+</table>
