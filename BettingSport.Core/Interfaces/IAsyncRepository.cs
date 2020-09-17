@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BettingSport.Core.Interfaces
 {
     public interface IAsyncRepository<TEntity, TKey> : IAsyncReadonlyRepository<TEntity, TKey> where TEntity : class
     {
-        TEntity Add(TEntity entity);
+        Task<TEntity> AddAsync(TEntity entity);
 
-        TEntity Update(TEntity entity);
+        Task<TEntity> UpdateAsync(TEntity entity);
 
-        void Delete(TKey key);
+        Task DeleteAsync(TKey key);
 
-        void Delete(TEntity entity);
+        Task DeleteAsync(TEntity entity);
     }
 }

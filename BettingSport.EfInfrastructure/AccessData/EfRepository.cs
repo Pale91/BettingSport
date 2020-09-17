@@ -24,12 +24,27 @@ namespace BettingSport.EfInfrastructure.AccessData
             return dbSet.Add(entity).Entity;
         }
 
+        public Task<TEntity> AddAsync(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(TKey key)
         {
             throw new NotImplementedException();
         }
 
         public void Delete(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(TKey key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(TEntity entity)
         {
             throw new NotImplementedException();
         }
@@ -55,6 +70,11 @@ namespace BettingSport.EfInfrastructure.AccessData
         }
 
         public TEntity Update(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity> UpdateAsync(TEntity entity)
         {
             throw new NotImplementedException();
         }
