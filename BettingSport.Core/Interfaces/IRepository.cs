@@ -7,13 +7,9 @@ namespace BettingSport.Core.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : BaseEntity
     {
-        TEntity Get(int key);
-
-        IEnumerable<TEntity> GetAll();
-
         TEntity Add(TEntity entity);
         
-        TEntity Update(TEntity entity);
+        void Update(TEntity entity);
 
         void Delete(int key);
 

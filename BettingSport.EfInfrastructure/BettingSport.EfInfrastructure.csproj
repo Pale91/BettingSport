@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200917062000_TryingConfiguration.Designer.cs" />
     <Compile Remove="Migrations\20200917062504_TryingConfiguration.cs" />
     <Compile Remove="Migrations\20200917062504_TryingConfiguration.Designer.cs" />
+    <Compile Remove="Migrations\20200917165050_Test.cs" />
+    <Compile Remove="Migrations\20200917165050_Test.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

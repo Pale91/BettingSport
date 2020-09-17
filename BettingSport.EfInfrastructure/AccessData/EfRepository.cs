@@ -10,8 +10,11 @@ using System.Threading.Tasks;
 
 namespace BettingSport.EfInfrastructure.AccessData
 {
-    public class EfRepository<TEntity> : IRepository<TEntity>, IAsyncRepository<TEntity> where TEntity: BaseEntity
+    public class EfRepository<TEntity> : IRepository<TEntity>, IReadonlyRepository<TEntity>, IAsyncReadonlyRepository<TEntity> where TEntity: BaseEntity
     {
+
+        //https://stackoverflow.com/questions/42034282/are-there-dbset-updateasync-and-removeasync-in-net-core#:~:text=1%20Answer&text=ToListAsync%20exists%20because%20it%20actually,you%20can%20call%20it%20asynchronously.
+
         BettingSportContext context;
         DbSet<TEntity> dbSet;
         public EfRepository(BettingSportContext context)
@@ -25,29 +28,15 @@ namespace BettingSport.EfInfrastructure.AccessData
             return dbSet.Add(entity).Entity;
         }
 
-        public Task<TEntity> AddAsync(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Delete(int key)
         {
-            throw new NotImplementedException();
+            var entity = this.Get(key);
+            this.dbSet.Remove(entity);
         }
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteAsync(int key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteAsync(TEntity entity)
-        {
-            throw new NotImplementedException();
+            this.dbSet.Remove(entity);
         }
 
         public TEntity Get(int key)
@@ -60,24 +49,20 @@ namespace BettingSport.EfInfrastructure.AccessData
             return dbSet.ToList();
         }
 
-        public Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await this.dbSet.ToListAsync();
         }
 
-        public Task<TEntity> GetAsync(int key)
+        public async Task<TEntity> GetAsync(int key)
         {
-            throw new NotImplementedException();
+            return await this.dbSet.FindAsync(key);
         }
 
-        public TEntity Update(TEntity entity)
+        public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<TEntity> UpdateAsync(TEntity entity)
-        {
-            throw new NotImplementedException();
+            // Attaching and marking the entity for update
+            this.context.Entry(entity).State = EntityState.Modified;
         }
     }
 }
