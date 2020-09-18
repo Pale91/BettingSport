@@ -18,6 +18,10 @@ export class SportEventListComponent implements OnInit {
   onEditMode: boolean;
   ngOnInit(): void {
     this.onEditMode = false;
+    this.refreshData();
+  }
+
+  refreshData() {
     this.sportEventService.getAll().subscribe(resp => {
       this.today = new Date();
       this.events = resp;
@@ -25,6 +29,10 @@ export class SportEventListComponent implements OnInit {
   }
 
   toggleEditMode(value: boolean) {
+    if(this.onEditMode != value && !value) {
+      // if the value changed and is in preview mode, refresh data
+      this.refreshData();
+    }
     this.onEditMode = value;
   }
 
@@ -40,5 +48,9 @@ export class SportEventListComponent implements OnInit {
     this.sportEventService.create(event).subscribe(resp => {
       this.events.push(resp);
     });
+  }
+
+  deleteEvent(eventId: number) {
+    this.events = this.events.filter(x => x.id != eventId);
   }
 }

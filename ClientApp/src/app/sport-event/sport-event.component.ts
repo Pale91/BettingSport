@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { SportEvent } from '../model/sport.event.model';
 import { SportEventService } from '../service/sport.event.service';
 
@@ -15,6 +15,7 @@ export class SportEventComponent implements OnInit {
 
   @Input() _event: SportEvent;
   @Input() onEditMode: boolean;
+  @Output() delete: EventEmitter<number> = new EventEmitter();
   fieldToEdit: string;
 
   ngOnInit(): void {
@@ -37,5 +38,11 @@ export class SportEventComponent implements OnInit {
       this._event = resp;
     });
     this.fieldToEdit = "";
+  }
+
+  remove() {
+    this.eventService.delete(this._event.id).subscribe(resp =>{
+      this.delete.emit(this._event.id);
+    });
   }
 }

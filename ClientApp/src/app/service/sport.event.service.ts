@@ -21,4 +21,8 @@ export class SportEventService {
   update(event: SportEvent): Observable<SportEvent> {
     return this.http.put<SportEvent>(this.apiUrl + event.id, event);
   }
+
+  delete(id: number): Observable<object> {
+    return this.http.delete(this.apiUrl + id);
+  }
 }

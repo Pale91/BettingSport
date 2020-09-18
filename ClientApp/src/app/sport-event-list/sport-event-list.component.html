@@ -21,6 +21,7 @@
             app-sport-event 
             [_event]="e" 
             [onEditMode]="onEditMode"
+            (delete)="deleteEvent($event)"
             [ngClass]="{
                 'expired': e.startDate < today,
                 'editing': onEditMode
