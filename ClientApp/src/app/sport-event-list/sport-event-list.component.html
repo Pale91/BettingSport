@@ -1,5 +1,6 @@
 <h2 class="title">Sport Events - Make your bets!!!</h2>
 <hr/>
+<p>{{today}}</p>
 <table *ngIf="events" style="width:100%">
     <thead>
         <tr>
@@ -11,6 +12,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let e of events" app-sport-event [_event]="e"></tr>
+        <tr 
+            *ngFor="let e of events" 
+            app-sport-event 
+            [_event]="e" 
+            [ngClass]="{'expired': e.startDate < today}">
+        </tr>
     </tbody>
 </table>

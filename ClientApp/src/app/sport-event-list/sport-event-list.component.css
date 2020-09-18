@@ -11,4 +11,6 @@ tbody tr:nth-child(even) {
 th {
     border-style: solid;
 }
-
+tbody tr.expired {
+    background-color: lightsalmon;
+}

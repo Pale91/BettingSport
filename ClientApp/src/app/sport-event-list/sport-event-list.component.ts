@@ -11,14 +11,15 @@ export class SportEventListComponent implements OnInit {
 
   constructor(
     private sportEventService: SportEventService
-  ) { console.log("ctor")}
+  ) {}
 
   events: SportEvent[];
+  today: Date;
   ngOnInit(): void {
-    console.log("NgInit")
+    this.today = new Date();
     this.sportEventService.getAll().subscribe(resp => {
-      console.log("data:" + JSON.stringify(resp));
       this.events = resp;
+      console.log(typeof(this.events[2].startDate))
     });
   }
 }
