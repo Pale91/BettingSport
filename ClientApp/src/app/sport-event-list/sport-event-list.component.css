@@ -1,0 +1,14 @@
+.title {
+    text-align: center;
+    font-weight: bold;
+}
+tbody tr:nth-child(odd) {
+    background-color: aliceblue;
+}
+tbody tr:nth-child(even) {
+    background-color: honeydew;
+}
+th {
+    border-style: solid;
+}
+
