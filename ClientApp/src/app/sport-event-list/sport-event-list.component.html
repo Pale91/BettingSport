@@ -1,14 +1,19 @@
 <h2 class="title">Sport Events - Make your bets!!!</h2>
 <hr/>
-<p>{{today}}</p>
+<div [ngClass]="'toolbar'">
+    <button *ngIf="!onEditMode" (click)="toggleEditMode(true)">Edit</button>
+    <button *ngIf="onEditMode" (click)="toggleEditMode(false)">Preview</button>
+</div>
 <table *ngIf="events" style="width:100%">
     <thead>
         <tr>
+            <th *ngIf="onEditMode">Id</th>
             <th>Name</th>
             <th>Odds For First Team</th>
             <th>Odds For Draw</th>
             <th>Odds For Second Team</th>
             <th>Start Date</th>
+            <th *ngIf="onEditMode">&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +21,14 @@
             *ngFor="let e of events" 
             app-sport-event 
             [_event]="e" 
-            [ngClass]="{'expired': e.startDate < today}">
+            [onEditMode]="onEditMode"
+            [ngClass]="{
+                'expired': e.startDate < today,
+                'editing': onEditMode
+            }">
         </tr>
     </tbody>
 </table>
+<div *ngIf="onEditMode" [ngClass]="'toolbar-bottom'">
+    <button>Add New</button>
+</div>

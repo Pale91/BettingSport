@@ -12,6 +12,7 @@ export class SportEventComponent implements OnInit {
   constructor() { }
 
   @Input() _event: SportEvent;
+  @Input() onEditMode: boolean;
   ngOnInit(): void {
   }
 

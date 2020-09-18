@@ -14,3 +14,13 @@ th {
 tbody tr.expired {
     background-color: lightsalmon;
 }
+tbody tr.editing {
+    background-color: inherit;
+}
+.toolbar {
+    text-align: right;
+    margin-bottom: 10px;
+}
+.toolbar-bottom {
+    margin-top: 10px;
+}

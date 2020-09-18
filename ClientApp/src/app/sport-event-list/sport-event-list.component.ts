@@ -15,11 +15,16 @@ export class SportEventListComponent implements OnInit {
 
   events: SportEvent[];
   today: Date;
+  onEditMode: boolean;
   ngOnInit(): void {
-    this.today = new Date();
+    this.onEditMode = false;
     this.sportEventService.getAll().subscribe(resp => {
+      this.today = new Date();
       this.events = resp;
-      console.log(typeof(this.events[2].startDate))
     });
+  }
+
+  toggleEditMode(value: boolean) {
+    this.onEditMode = value;
   }
 }

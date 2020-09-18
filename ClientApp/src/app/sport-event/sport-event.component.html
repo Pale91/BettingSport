@@ -1,7 +1,10 @@
-
-        <td>{{_event.name}}</td>
-        <td>{{_event.oddsForFirstTeam}} &nbsp;</td>
-        <td>{{_event.oddsForDraw}} &nbsp;</td>
-        <td>{{_event.oddsForSecondTeam }} &nbsp;</td>
-        <td>{{_event.startDate | date:'short'}}</td>
-
+<td *ngIf="onEditMode">{{_event.id}}</td>
+<td>{{_event.name}}</td>
+<td>{{_event.oddsForFirstTeam | number:'1.2-2'}} &nbsp;</td>
+<td>{{_event.oddsForDraw | number:'1.2-2'}} &nbsp;</td>
+<td>{{_event.oddsForSecondTeam | number:'1.2-2'}} &nbsp;</td>
+<td>{{_event.startDate | date:'dd/MM/yyyy HH:mm'}}</td>
+<td *ngIf="onEditMode">
+        <button>Save</button>
+        <button>Delete</button>
+</td>
