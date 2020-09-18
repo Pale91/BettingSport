@@ -27,4 +27,18 @@ export class SportEventListComponent implements OnInit {
   toggleEditMode(value: boolean) {
     this.onEditMode = value;
   }
+
+  addNew() {
+    let date: Date = new Date();
+    date.setHours(23, 59);
+    let event: SportEvent = {
+      startDate: date,
+      id: 0,
+      name: ""
+    };
+
+    this.sportEventService.create(event).subscribe(resp => {
+      this.events.push(resp);
+    });
+  }
 }

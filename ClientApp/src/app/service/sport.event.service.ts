@@ -14,4 +14,7 @@ export class SportEventService {
     return this.http.get<SportEvent[]>(this.apiUrl);
   }
 
+  create(event): Observable<SportEvent> {
+    return this.http.post<SportEvent>(this.apiUrl, event);
+  }
 }

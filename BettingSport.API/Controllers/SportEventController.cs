@@ -49,7 +49,6 @@ namespace BettingSport.API.Controllers
         [HttpPost]
         public async Task<ActionResult<SportEvent>> Create(SportEvent sportEvent)
         {
-            sportEvent.StartDate = DateTime.UtcNow;
             sportEvent = repository.Add(sportEvent);
             await unitOfWork.CommitChangesAsync();
 
