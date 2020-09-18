@@ -10,6 +10,7 @@ import { SportEventService } from '../service/sport.event.service';
 export class SportEventComponent implements OnInit {
 
   constructor(
+    private eventService: SportEventService
   ) { }
 
   @Input() _event: SportEvent;
@@ -29,5 +30,12 @@ export class SportEventComponent implements OnInit {
     if (this.onEditMode) {
       this.fieldToEdit = fiedlName;
     }
+  }
+
+  save() {
+    this.eventService.update(this._event).subscribe(resp =>{
+      this._event = resp;
+    });
+    this.fieldToEdit = "";
   }
 }

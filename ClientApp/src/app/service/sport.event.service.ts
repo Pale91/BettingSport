@@ -6,7 +6,7 @@ import { SportEvent } from '../model/sport.event.model';
 @Injectable()
 export class SportEventService {
   constructor(private http: HttpClient) { 
-      this.apiUrl = "/api/sportevent";
+      this.apiUrl = "/api/sportevent/";
   }
   private apiUrl: string;
 
@@ -14,7 +14,11 @@ export class SportEventService {
     return this.http.get<SportEvent[]>(this.apiUrl);
   }
 
-  create(event): Observable<SportEvent> {
+  create(event: SportEvent): Observable<SportEvent> {
     return this.http.post<SportEvent>(this.apiUrl, event);
+  }
+
+  update(event: SportEvent): Observable<SportEvent> {
+    return this.http.put<SportEvent>(this.apiUrl + event.id, event);
   }
 }

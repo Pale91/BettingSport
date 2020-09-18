@@ -1,7 +1,7 @@
 <td *ngIf="onEditMode">{{_event.id}}</td>
 <td>
         <div *ngIf="fieldToEdit != 'name'" (click)="editField('name')">
-                {{_event.name}}
+                {{_event.name}} &nbsp;
         </div>
         <div *ngIf="fieldToEdit == 'name'">
                 <input type="text" [(ngModel)]="_event.name">
@@ -42,6 +42,6 @@
         </div>
 </td>
 <td *ngIf="onEditMode">
-        <button>Save</button>
+        <button (click)="save()">Save</button>
         <button>Delete</button>
 </td>
