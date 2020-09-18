@@ -3,7 +3,7 @@ import { SportEvent } from '../model/sport.event.model';
 import { SportEventService } from '../service/sport.event.service';
 
 @Component({
-  selector: 'app-sport-event',
+  selector: '[app-sport-event]',
   templateUrl: './sport-event.component.html',
   styleUrls: ['./sport-event.component.css']
 })

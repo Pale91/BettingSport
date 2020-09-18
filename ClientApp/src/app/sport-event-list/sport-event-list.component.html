@@ -2,12 +2,10 @@
 <table *ngIf="events" style="width:100%">
     <tr>
         <th>Name</th>
-        <th>oddsForFirstTeam</th>
-        <th>oddsForDraw</th>
-        <th>oddsForSecondTeam</th>
-        <th>startDate</th>
+        <th>Odds For First Team</th>
+        <th>Odds For Draw</th>
+        <th>Odds For Second Team</th>
+        <th>Start Date</th>
     </tr>
-    <tr *ngFor="let e of events">
-        <app-sport-event [_event]="e"></app-sport-event>
-    </tr>
+    <tr *ngFor="let e of events" app-sport-event [_event]="e"></tr>
 </table>
