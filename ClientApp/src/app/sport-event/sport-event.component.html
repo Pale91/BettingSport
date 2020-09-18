@@ -1,9 +1,45 @@
 <td *ngIf="onEditMode">{{_event.id}}</td>
-<td>{{_event.name}}</td>
-<td>{{_event.oddsForFirstTeam | number:'1.2-2'}} &nbsp;</td>
-<td>{{_event.oddsForDraw | number:'1.2-2'}} &nbsp;</td>
-<td>{{_event.oddsForSecondTeam | number:'1.2-2'}} &nbsp;</td>
-<td>{{_event.startDate | date:'dd/MM/yyyy HH:mm'}}</td>
+<td>
+        <div *ngIf="fieldToEdit != 'name'" (click)="editField('name')">
+                {{_event.name}}
+        </div>
+        <div *ngIf="fieldToEdit == 'name'">
+                <input type="text" [(ngModel)]="_event.name">
+        </div>
+</td>
+<td>
+       
+        <div *ngIf="fieldToEdit != 'oddsForFirstTeam'" (click)="editField('oddsForFirstTeam')">
+                {{_event.oddsForFirstTeam | number:'1.2-2'}} &nbsp;
+        </div>
+        <div *ngIf="fieldToEdit == 'oddsForFirstTeam'">
+                <input type="number" [(ngModel)]="_event.oddsForFirstTeam">
+        </div>
+</td>
+<td>
+        <div *ngIf="fieldToEdit != 'oddsForDraw'" (click)="editField('oddsForDraw')">
+                {{_event.oddsForDraw | number:'1.2-2'}} &nbsp;
+        </div>
+        <div *ngIf="fieldToEdit == 'oddsForDraw'">
+                <input type="number" [(ngModel)]="_event.oddsForDraw">
+        </div>
+</td>
+<td>
+        <div *ngIf="fieldToEdit != 'oddsForSecondTeam'" (click)="editField('oddsForSecondTeam')">
+                {{_event.oddsForSecondTeam | number:'1.2-2'}} &nbsp;
+        </div>
+        <div *ngIf="fieldToEdit == 'oddsForSecondTeam'">
+                <input type="number" [(ngModel)]="_event.oddsForSecondTeam">
+        </div>
+</td>
+<td>
+        <div *ngIf="fieldToEdit != 'startDate'" (click)="editField('startDate')">
+                {{_event.startDate | date:'dd/MM/yyyy HH:mm'}}
+        </div>
+        <div *ngIf="fieldToEdit == 'startDate'">
+                <input type="datetime" [(ngModel)]="_event.startDate">
+        </div>
+</td>
 <td *ngIf="onEditMode">
         <button>Save</button>
         <button>Delete</button>

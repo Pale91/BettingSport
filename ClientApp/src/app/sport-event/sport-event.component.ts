@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { SportEvent } from '../model/sport.event.model';
 import { SportEventService } from '../service/sport.event.service';
 
@@ -9,11 +9,25 @@ import { SportEventService } from '../service/sport.event.service';
 })
 export class SportEventComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+  ) { }
 
   @Input() _event: SportEvent;
   @Input() onEditMode: boolean;
+  fieldToEdit: string;
+
   ngOnInit(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if(!changes.onEditMode.currentValue) {
+      this.fieldToEdit = "";
+    }
+  }
+
+  editField(fiedlName: string) {
+    if (this.onEditMode) {
+      this.fieldToEdit = fiedlName;
+    }
+  }
 }

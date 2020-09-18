@@ -8,6 +8,7 @@ import { SportEventService } from './service/sport.event.service';
 import { SportEventComponent } from './sport-event/sport-event.component';
 import { SportEventListComponent } from './sport-event-list/sport-event-list.component';
 import { JsonDateInterceptor } from './infrastructure/json-date.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +21,9 @@ import { JsonDateInterceptor } from './infrastructure/json-date.interceptor';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
