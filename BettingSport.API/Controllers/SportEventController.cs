@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BettingSport.Core.Entities;
 using BettingSport.Core.Interfaces;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

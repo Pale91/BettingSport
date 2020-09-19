@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using FluentValidation.AspNetCore;
+using System.Net;
 
 namespace BettingSport.API
 {
@@ -32,7 +34,10 @@ namespace BettingSport.API
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
-                });
+                })
+                .AddFluentValidation(
+                    options => options.RegisterValidatorsFromAssemblyContaining<Startup>()
+                );
 
             // Adding service
             services.AddEf(Configuration);
