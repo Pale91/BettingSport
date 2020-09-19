@@ -63,10 +63,12 @@ namespace BettingSport.API.Controllers
         public async Task<ActionResult<SportEvent>> Update(int id, SportEvent sportEvent)
         {
             if (id != sportEvent.Id)
-                return BadRequest("Id mismatch");
+                return BadRequest(new { error = "Id mismatch" });
+
+            // Validating only in update action because from task desc: "When pressed ‘Add New Event’ .... (in the storage are saved only EventID and EventStartDate)"
             var result = validator.Validate(sportEvent);
             if (!result.IsValid)
-                return BadRequest(result.Errors.Select(e => e.ErrorMessage));
+                return BadRequest(result.Errors.Select(e => new { error = e.ErrorMessage }));
 
             repository.Update(sportEvent);
             await unitOfWork.CommitChangesAsync();
