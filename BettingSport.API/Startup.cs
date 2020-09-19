@@ -15,6 +15,9 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using FluentValidation.AspNetCore;
 using System.Net;
+using FluentValidation;
+using BettingSport.Core.Entities;
+using BettingSport.API.Validators;
 
 namespace BettingSport.API
 {
@@ -36,11 +39,12 @@ namespace BettingSport.API
                     options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
                 })
                 .AddFluentValidation(
-                    options => options.RegisterValidatorsFromAssemblyContaining<Startup>()
+                    //options => options.RegisterValidatorsFromAssemblyContaining<Startup>()
                 );
 
             // Adding service
             services.AddEf(Configuration);
+            services.AddSingleton<AbstractValidator<SportEvent>, SportEventValidator>();
             services.AddSwaggerGen();
         }
 

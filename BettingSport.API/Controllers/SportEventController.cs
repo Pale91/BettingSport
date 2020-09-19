@@ -18,15 +18,18 @@ namespace BettingSport.API.Controllers
         private readonly IRepository<SportEvent> repository;
         private readonly IAsyncReadonlyRepository<SportEvent> readonlyRepository;
         private readonly IAsyncUnitOfWork unitOfWork;
+        private readonly AbstractValidator<SportEvent> validator;
         public SportEventController(
             IRepository<SportEvent> repository,
             IAsyncReadonlyRepository<SportEvent> readonlyRepository,
-            IAsyncUnitOfWork unitOfWork
+            IAsyncUnitOfWork unitOfWork,
+            AbstractValidator<SportEvent> validator
             )
         {
             this.repository = repository;
             this.readonlyRepository = readonlyRepository;
             this.unitOfWork = unitOfWork;
+            this.validator = validator;
         }
 
         [HttpGet]
@@ -60,7 +63,10 @@ namespace BettingSport.API.Controllers
         public async Task<ActionResult<SportEvent>> Update(int id, SportEvent sportEvent)
         {
             if (id != sportEvent.Id)
-                return BadRequest();
+                return BadRequest("Id mismatch");
+            var result = validator.Validate(sportEvent);
+            if (!result.IsValid)
+                return BadRequest(result.Errors.Select(e => e.ErrorMessage));
 
             repository.Update(sportEvent);
             await unitOfWork.CommitChangesAsync();
