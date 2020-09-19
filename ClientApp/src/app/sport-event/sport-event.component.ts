@@ -22,26 +22,30 @@ export class SportEventComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(!changes.onEditMode.currentValue) {
+    if (!changes.onEditMode.currentValue) {
       this.fieldToEdit = "";
     }
   }
 
-  editField(fiedlName: string) {
+  clickField(fieldName: string) {
     if (this.onEditMode) {
-      this.fieldToEdit = fiedlName;
+      this.fieldToEdit = fieldName;
+    } else {
+      if (fieldName.startsWith("odd")) {
+        console.log(`${this._event.id} ${fieldName} ${this._event[fieldName]}`)
+      }
     }
   }
 
   save() {
-    this.eventService.update(this._event).subscribe(resp =>{
+    this.eventService.update(this._event).subscribe(resp => {
       this._event = resp;
     });
     this.fieldToEdit = "";
   }
 
   remove() {
-    this.eventService.delete(this._event.id).subscribe(resp =>{
+    this.eventService.delete(this._event.id).subscribe(resp => {
       this.delete.emit(this._event.id);
     });
   }

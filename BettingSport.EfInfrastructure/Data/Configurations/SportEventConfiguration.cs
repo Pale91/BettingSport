@@ -23,7 +23,9 @@ namespace BettingSport.EfInfrastructure.Data.Configurations
             builder.Property(e => e.OddsForSecondTeam).IsRequired(false);
             builder.Property(e => e.StartDate).IsRequired().HasConversion(
                 entityValue => entityValue,
-                dbValue => DateTime.SpecifyKind(dbValue, DateTimeKind.Utc)); // Setting Kind as UTC (dates are saved as UTC), when retrieved from DB the Kind property is set to Unspecified
+                // Setting Kind as UTC (dates are saved as UTC), when retrieved from DB the Kind property is set to Unspecified
+                // Consideration: Change data type to DateTimeOffset
+                dbValue => DateTime.SpecifyKind(dbValue, DateTimeKind.Utc));
         }
     }
 }
