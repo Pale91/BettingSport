@@ -11,6 +11,9 @@ namespace BettingSport.API.Infrastructure
     {
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
+            // reader.GetString() return string representation of the date in UTC (ISO 8601) (convention with front-end)
+            // DateTime.Parse(reader.GetString()) convert string to date in local time
+            // .ToUniversalTime() convert to UTC
             return DateTime.Parse(reader.GetString()).ToUniversalTime();
         }
 

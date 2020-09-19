@@ -11,6 +11,10 @@
     <Compile Remove="Migrations\20200917062504_TryingConfiguration.Designer.cs" />
     <Compile Remove="Migrations\20200917165050_Test.cs" />
     <Compile Remove="Migrations\20200917165050_Test.Designer.cs" />
+    <Compile Remove="Migrations\20200919153401_TestMigration.cs" />
+    <Compile Remove="Migrations\20200919153401_TestMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200919153912_UsingDateTimeOffset.cs" />
+    <Compile Remove="Migrations\20200919153912_UsingDateTimeOffset.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
