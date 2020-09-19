@@ -1,8 +1,8 @@
 <h2 class="title">Sport Events - Make your bets!!!</h2>
 <hr/>
 <div [ngClass]="'toolbar'">
-    <button *ngIf="!onEditMode" (click)="toggleEditMode(true)">Edit</button>
-    <button *ngIf="onEditMode" (click)="toggleEditMode(false)">Preview</button>
+    <button *ngIf="!onEditMode" (click)="toggleEditMode(true)">Edit Mode</button>
+    <button *ngIf="onEditMode" (click)="toggleEditMode(false)">Preview Mode</button>
 </div>
 <table *ngIf="events" style="width:100%">
     <thead>
