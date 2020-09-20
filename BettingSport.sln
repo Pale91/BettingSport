@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BettingSport.Core", "Bettin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BettingSport.EfInfrastructure", "BettingSport.EfInfrastructure\BettingSport.EfInfrastructure.csproj", "{CEABBE79-9685-46EF-A9E5-363B7A19325C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingSport.UnitTests", "BettingSport.UnitTests\BettingSport.UnitTests.csproj", "{99123F33-4220-48A4-B3B9-0C4EB25106A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettingSport.Tests", "BettingSport.UnitTests\BettingSport.Tests.csproj", "{99123F33-4220-48A4-B3B9-0C4EB25106A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
