@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,8 +62,14 @@ namespace BettingSport.EfInfrastructure.AccessData
 
         public void Update(TEntity entity)
         {
-            // Attaching and marking the entity for update
-            this.context.Entry(entity).State = EntityState.Modified;
+            // if entity is a new instance of an attached one with same Id => detach
+            var attachedEnity = dbSet.Local.FirstOrDefault(x => x != entity && x.Id == entity.Id);
+            if(attachedEnity != null)
+            {
+                // Deta
+                context.Entry(attachedEnity).State = EntityState.Detached;
+            }
+            this.dbSet.Update(entity);
         }
     }
 }

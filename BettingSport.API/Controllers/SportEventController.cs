@@ -77,6 +77,7 @@ namespace BettingSport.API.Controllers
             if (_event == null)
                 return NotFound();
             repository.Update(sportEvent);
+            await unitOfWork.CommitChangesAsync();
 
             // Choosing OK (200) over NoConten (204) in order to retrieve the entity in the response 
             return Ok(sportEvent);
