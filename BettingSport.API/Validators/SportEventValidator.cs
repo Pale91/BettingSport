@@ -12,6 +12,7 @@ namespace BettingSport.API.Validators
         public SportEventValidator()
         {
             // Only validations for Update, when Id > 0
+            // Because from task description: "When pressed ‘Add New Event’ ... in the storage are saved only EventID and EventStartDate"
             When(e => e.Id > 0, () =>
             {
                 RuleFor(m => m.Name).NotEmpty();
