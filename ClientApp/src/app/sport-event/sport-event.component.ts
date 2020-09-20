@@ -40,13 +40,20 @@ export class SportEventComponent implements OnInit {
   save() {
     this.eventService.update(this._event).subscribe(resp => {
       this._event = resp;
+    }, error => {
+      console.log(error.status);
+      alert(`An unexpected error happened while saving the event ${ this._event.name || this._event.id}: ${JSON.stringify(error.error.errors)}`)
     });
     this.fieldToEdit = "";
   }
 
   remove() {
-    this.eventService.delete(this._event.id).subscribe(resp => {
-      this.delete.emit(this._event.id);
-    });
+    if(confirm(`Are you sure you would like to delete the event ${ this._event.name || this._event.id}`)){
+      this.eventService.delete(this._event.id).subscribe(resp => {
+        this.delete.emit(this._event.id);
+      }, error => {
+        alert(`An unexpected error happened while deleting the event ${ this._event.name || this._event.id}: ${JSON.stringify(error)}`)
+      });
+    }
   }
 }
