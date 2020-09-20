@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SportEvent } from '../model/sport.event.model';
+import { PageResponse } from '../model/page-response.model';
 
 @Injectable()
 export class SportEventService {
@@ -10,8 +11,8 @@ export class SportEventService {
   }
   private apiUrl: string;
 
-  getAll(): Observable<SportEvent[]> {
-    return this.http.get<SportEvent[]>(this.apiUrl);
+  getAll(): Observable<PageResponse<SportEvent>> {
+    return this.http.get<PageResponse<SportEvent>>(this.apiUrl);
   }
 
   create(event: SportEvent): Observable<SportEvent> {

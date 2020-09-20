@@ -11,5 +11,7 @@ namespace BettingSport.Core.Interfaces
 
         IEnumerable<TEntity> GetAll();
 
+        IEnumerable<TEntity> Find(ISpecification<TEntity> specification);
+
     }
 }

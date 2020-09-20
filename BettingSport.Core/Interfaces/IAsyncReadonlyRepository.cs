@@ -11,5 +11,7 @@ namespace BettingSport.Core.Interfaces
         Task<TEntity> GetAsync(int key);
 
         Task<IEnumerable<TEntity>> GetAllAsync();
+
+        Task<IEnumerable<TEntity>> FindAsync(ISpecification<TEntity> specification);
     }
 }

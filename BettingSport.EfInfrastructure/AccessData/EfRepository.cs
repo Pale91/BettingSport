@@ -40,6 +40,11 @@ namespace BettingSport.EfInfrastructure.AccessData
             this.dbSet.Remove(entity);
         }
 
+        public IEnumerable<TEntity> Find(ISpecification<TEntity> specification)
+        {
+            return ProcessSpecification(specification).ToList();
+        }
+
         public TEntity Get(int key)
         {
             return dbSet.Find(key);
@@ -70,6 +75,19 @@ namespace BettingSport.EfInfrastructure.AccessData
                 context.Entry(attachedEnity).State = EntityState.Detached;
             }
             this.dbSet.Update(entity);
+        }
+
+        public  async Task<IEnumerable<TEntity>> FindAsync(ISpecification<TEntity> specification)
+        {
+            return await ProcessSpecification(specification).ToListAsync();
+        }
+
+        private IQueryable<TEntity> ProcessSpecification(ISpecification <TEntity> specification)
+        {
+            return dbSet
+                .Where(specification.Criteria)
+                .Skip((specification.PageNumber - 1) * specification.PageSize)
+                .Take(specification.PageSize);
         }
     }
 }

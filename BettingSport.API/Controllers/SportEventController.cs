@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BettingSport.API.Helper;
 using BettingSport.Core.Entities;
 using BettingSport.Core.Interfaces;
 using FluentValidation;
@@ -34,10 +35,16 @@ namespace BettingSport.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SportEvent>>> GetAll()
+        public async Task<ActionResult<PageResponse<SportEvent>>> GetAll([FromQuery]FilterSportEventParams filterParams)
         {
-            var events = await readonlyRepository.GetAllAsync();
-            return Ok(events);
+            var specification = filterParams.ToSpecification();
+            var events = await readonlyRepository.FindAsync(specification);
+            
+            return Ok(new PageResponse<SportEvent>() { 
+                PageNumber = specification.PageNumber,
+                PageSize = specification.PageSize,
+                Data = events
+            });
         }
 
         [HttpGet("{id}")]

@@ -24,7 +24,7 @@ export class SportEventListComponent implements OnInit {
   refreshData() {
     this.sportEventService.getAll().subscribe(resp => {
       this.today = new Date();
-      this.events = resp;
+      this.events = resp.data;
     });
   }
 
