@@ -7,6 +7,7 @@ using BettingSport.Core.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BettingSport.API.Controllers
 {
@@ -40,6 +41,8 @@ namespace BettingSport.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<SportEvent>> Get(int id)
         {
             var _event = await readonlyRepository.GetAsync(id);
@@ -51,6 +54,8 @@ namespace BettingSport.API.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<SportEvent>> Create(SportEvent sportEvent)
         {
             sportEvent = repository.Add(sportEvent);
@@ -60,24 +65,26 @@ namespace BettingSport.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<SportEvent>> Update(int id, SportEvent sportEvent)
         {
             if (id != sportEvent.Id)
                 return BadRequest(new { error = "Id mismatch" });
 
-            // Validating only in update action because from task desc: "When pressed ‘Add New Event’ .... (in the storage are saved only EventID and EventStartDate)"
-            var result = validator.Validate(sportEvent);
-            if (!result.IsValid)
-                return BadRequest(result.Errors.Select(e => new { error = e.ErrorMessage }));
-
+            var _event = await readonlyRepository.GetAsync(id);
+            if (_event == null)
+                return NotFound();
             repository.Update(sportEvent);
-            await unitOfWork.CommitChangesAsync();
 
             // Choosing OK (200) over NoConten (204) in order to retrieve the entity in the response 
             return Ok(sportEvent);
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<SportEvent>> Delete(int id)
         {
             var _event = await readonlyRepository.GetAsync(id);
