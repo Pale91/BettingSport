@@ -30,11 +30,11 @@ namespace BettingSport.Tests.IntegrationTest.Fixture
                     options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=BettingSportTest;Trusted_Connection=True;");
                 }, ServiceLifetime.Singleton);
 
-            services.AddTransient(typeof(IRepository<>), typeof(EfRepository<>));
-            services.AddTransient(typeof(IReadonlyRepository<>), typeof(EfRepository<>));
-            services.AddTransient(typeof(IAsyncReadonlyRepository<>), typeof(EfRepository<>));
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IAsyncUnitOfWork, UnitOfWork>();
+            services.AddSingleton(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddSingleton(typeof(IReadonlyRepository<>), typeof(EfRepository<>));
+            services.AddSingleton(typeof(IAsyncReadonlyRepository<>), typeof(EfRepository<>));
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<IAsyncUnitOfWork, UnitOfWork>();
 
             serviceProvider = services.BuildServiceProvider(validateScopes: true);
 

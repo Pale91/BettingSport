@@ -12,7 +12,7 @@ using Xunit.Extensions.Ordering;
 namespace BettingSport.Tests.IntegrationTest
 {
     [Collection("Service collection")]
-    [Order(0)]
+    [Order(1)]
     public class IReadonlyRepositoryTest
     {
         InfrastructureFixture fixture;
