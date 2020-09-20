@@ -26,7 +26,7 @@ namespace BettingSport.Tests.UnitTest.Web
             var count = data.Where(specification.Criteria.Compile()).Count();
 
             // Assert
-            Assert.Equal(count, expectedCount);
+            Assert.Equal(expectedCount, count);
         }
 
 

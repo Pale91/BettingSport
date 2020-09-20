@@ -18,8 +18,8 @@ namespace BettingSport.Tests.UnitTest.Web
             PagingSpecification<SportEvent> specification = new PagingSpecification<SportEvent>();
 
             // Assert
-            Assert.Equal(specification.PageSize, Constants.PAGE_SIZE);
-            Assert.Equal(specification.PageNumber, Constants.PAGE_NUMBER);
+            Assert.Equal(Constants.PAGE_SIZE, specification.PageSize);
+            Assert.Equal(Constants.PAGE_NUMBER, specification.PageNumber);
         }
 
         [Fact]
@@ -29,8 +29,8 @@ namespace BettingSport.Tests.UnitTest.Web
             PagingSpecification<SportEvent> specification = new PagingSpecification<SportEvent>(-1, -1);
 
             // Assert
-            Assert.Equal(specification.PageSize, Constants.PAGE_SIZE);
-            Assert.Equal(specification.PageNumber, Constants.PAGE_NUMBER);
+            Assert.Equal(Constants.PAGE_SIZE, specification.PageSize);
+            Assert.Equal(Constants.PAGE_NUMBER, specification.PageNumber);
         }
 
         [Fact]
@@ -44,8 +44,8 @@ namespace BettingSport.Tests.UnitTest.Web
             PagingSpecification<SportEvent> specification = new PagingSpecification<SportEvent>(pageSize, pageNumber);
 
             // Assert
-            Assert.Equal(specification.PageSize, pageSize);
-            Assert.Equal(specification.PageNumber, pageNumber);
+            Assert.Equal(pageSize, specification.PageSize);
+            Assert.Equal(pageNumber, specification.PageNumber);
         }
     }
 }

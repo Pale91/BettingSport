@@ -1,4 +1,5 @@
-﻿using BettingSport.Core.Interfaces;
+﻿using BettingSport.Core.Entities;
+using BettingSport.Core.Interfaces;
 using BettingSport.EfInfrastructure.AccessData;
 using BettingSport.EfInfrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ namespace BettingSport.Tests.IntegrationTest.Fixture
         ServiceProvider serviceProvider;
 
         public IServiceProvider ServiceProvider { get { return serviceProvider;  } }
+        public SportEvent DefaultEvent { get; private set; }
         public InfrastructureFixture()
         {
             var container = new Container();
@@ -44,14 +46,15 @@ namespace BettingSport.Tests.IntegrationTest.Fixture
             var context = ServiceProvider.GetService<BettingSportContext>();
             context.Database.EnsureCreated();
 
-            context.SportEvents.Add(new Core.Entities.SportEvent()
+            // Saving created to have reference to its Id since the Database is created only one time
+            DefaultEvent = context.SportEvents.Add(new SportEvent()
             {
                 Name = "Test Event",
                 OddsForDraw = 1,
                 OddsForFirstTeam = 1,
                 OddsForSecondTeam = 1,
                 StartDate = DateTime.Now
-            });
+            }).Entity;
 
             context.SaveChanges();
         }
