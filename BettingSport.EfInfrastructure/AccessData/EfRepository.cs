@@ -14,8 +14,6 @@ namespace BettingSport.EfInfrastructure.AccessData
     public class EfRepository<TEntity> : IRepository<TEntity>, IReadonlyRepository<TEntity>, IAsyncReadonlyRepository<TEntity> where TEntity: BaseEntity
     {
 
-        //https://stackoverflow.com/questions/42034282/are-there-dbset-updateasync-and-removeasync-in-net-core#:~:text=1%20Answer&text=ToListAsync%20exists%20because%20it%20actually,you%20can%20call%20it%20asynchronously.
-
         BettingSportContext context;
         DbSet<TEntity> dbSet;
         public EfRepository(BettingSportContext context)

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BettingSport.API.Controllers
 {
-    // https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio
+    
     [Route("api/[controller]")]
     [ApiController]
     public class SportEventController : ControllerBase
