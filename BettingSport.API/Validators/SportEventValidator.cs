@@ -11,10 +11,14 @@ namespace BettingSport.API.Validators
     {
         public SportEventValidator()
         {
-            RuleFor(m => m.Name).NotEmpty();
-            RuleFor(m => m.OddsForFirstTeam).NotEmpty().GreaterThanOrEqualTo(1);
-            RuleFor(m => m.OddsForDraw).NotEmpty().GreaterThanOrEqualTo(1);
-            RuleFor(m => m.OddsForSecondTeam).NotEmpty().GreaterThanOrEqualTo(1);
+            // Only validations for Update, when Id > 0
+            When(e => e.Id > 0, () =>
+            {
+                RuleFor(m => m.Name).NotEmpty();
+                RuleFor(m => m.OddsForFirstTeam).NotEmpty().GreaterThanOrEqualTo(1);
+                RuleFor(m => m.OddsForDraw).NotEmpty().GreaterThanOrEqualTo(1);
+                RuleFor(m => m.OddsForSecondTeam).NotEmpty().GreaterThanOrEqualTo(1);
+            });
         }
     }
 }

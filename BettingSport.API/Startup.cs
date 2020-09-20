@@ -39,7 +39,7 @@ namespace BettingSport.API
                     options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
                 })
                 .AddFluentValidation(
-                    //options => options.RegisterValidatorsFromAssemblyContaining<Startup>()
+                    options => options.RegisterValidatorsFromAssemblyContaining<Startup>()
                 );
 
             // Adding service
